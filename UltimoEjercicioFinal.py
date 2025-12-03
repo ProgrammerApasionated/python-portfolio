@@ -1,30 +1,13 @@
-# EJERCICIO: GESTIÓN DE UN MINI-SISTEMA DE ESTUDIANTES
-#
-# Crea un programa que permita gestionar las notas de varios estudiantes de un curso.
-#
-# El programa debe:
-# 1. Permitir introducir los nombres de los estudiantes y sus calificaciones de varias asignaturas.
-#    - Cada estudiante tendrá un nombre (cadena) y una lista de notas (lista de enteros de 0 a 10).
-#    - El usuario debe poder añadir tantos estudiantes como quiera, hasta introducir una cadena vacía.
-#
-# 2. Calcular automáticamente:
-#    a) La media de cada estudiante y mostrar si aprueba o suspende (aprobado >= 5).
-#    b) La nota máxima y mínima de cada estudiante.
-#
-# 3. Permitir buscar un estudiante por nombre y mostrar todas sus notas y su media.
-#
-# 4. Mostrar un ranking de los estudiantes ordenados por media de mayor a menor.
-#
-# 5. Calcular la media de la clase en cada asignatura.
-#
-# BONUS (opcional):
-# 6. Detectar si algún estudiante tiene todas las notas iguales (por ejemplo: todas 8).
-# 7. Mostrar cuántos estudiantes aprobaron todas las asignaturas.
-#
-# NOTAS:
-# - Usa listas de listas o diccionarios para guardar los estudiantes y sus notas.
-# - Debes practicar bucles, condicionales, listas, cadenas y funciones.
-# - Comenta bien cada función para luego repasar antes del examen.
+# def obtener_datos()                ->    Obtener la lista con los datos.
+
+# def mostrar_info(lista)            ->    Enseñar toda la información de los estudiantes.
+
+# def media_alumno(lista_num)        ->    Con las notas del primer estudiante calcula su media.
+
+# def nota_maxima_minima(lista)      ->    Con la lista saca el valor máximo y mínimo.
+
+# def encontrar_alumno (lista_datos) ->    Busca el nombre de un estudiante y muestra sus datos.
+
 
 
 def obtener_datos():
@@ -51,10 +34,11 @@ def mostrar_info(lista):
 
 def media_alumno(lista_num):
     media_persona = 0
+    lista_num = lista_num[1:] # Todas las notas del estudiante
     for nota in range (len(lista_num)):
-        if nota >= 1:
+        if nota >= 0:
             media_persona += lista_num[nota]
-    media_persona = media_persona / (len(lista_num) - 1)
+    media_persona = media_persona / len(lista_num)
     if media_persona >= 5:
         print (f"\nEl estudiante ha tenido suerte y con su media de {media_persona} ha aprobado. ")
     else :
@@ -77,7 +61,7 @@ def nota_maxima_minima(lista): # Índice 1 primer número.
 def encontrar_alumno(lista_datos):
     nombre = input("Introduce el nombre de un estudiante a buscar: ")
     for alumno in lista_datos:
-        if alumno[0].lower() == nombre.lower():
+        if alumno[0].lower() == nombre.lower(): # Se pone alumno[0] porque se puede entender como una matriz, y la posición 0 se entiende como el nombre
             print (f"El estudiante encontrado tiene estas notas: ")
             mostrar_info(alumno)
             media_alumno(alumno)
@@ -96,4 +80,3 @@ while True :
 for i in range (len(estudiantes)):
     mostrar_info(estudiantes[i])
 
-# Ejemplo xd
